@@ -1,0 +1,406 @@
+GNU gdb (Ubuntu 7.11.1-0ubuntu1~16.5) 7.11.1
+Copyright (C) 2016 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word".
+GEF for linux ready, type `gef' to start, `gef config' to configure
+67 commands loaded for GDB 7.11.1 using Python engine 3.5
+[*] 3 commands could not be loaded, run `gef missing` to know why.
+
+warning: /home/aser/pwn/pwndbg/gdbinit.py: No such file or directory
+gef➤  attach 6240
+Attaching to process 6240
+Reading symbols from /home/aser/pwn/2017/babyheap/babyheap...(no debugging symbols found)...done.
+Reading symbols from /lib/x86_64-linux-gnu/libc.so.6...Reading symbols from /usr/lib/debug//lib/x86_64-linux-gnu/libc-2.23.so...done.
+done.
+Reading symbols from /lib64/ld-linux-x86-64.so.2...Reading symbols from /usr/lib/debug//lib/x86_64-linux-gnu/ld-2.23.so...done.
+done.
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+gef➤  x/30gx 0x555d5ebe3000
+0x555d5ebe3000:	0x0000000000000000	0x0000000000000031
+0x555d5ebe3010:	0x0000000000000000	0x0000000000000000
+0x555d5ebe3020:	0x0000000000000000	0x0000000000000000
+0x555d5ebe3030:	0x0000000000000000	0x0000000000000031
+0x555d5ebe3040:	0x0000000000000000	0x0000000000000000
+0x555d5ebe3050:	0x0000000000000000	0x0000000000000000
+0x555d5ebe3060:	0x0000000000000000	0x0000000000000031
+0x555d5ebe3070:	0x0000000000000000	0x0000000000000000
+0x555d5ebe3080:	0x0000000000000000	0x0000000000000000
+0x555d5ebe3090:	0x0000000000000000	0x0000000000000031
+0x555d5ebe30a0:	0x0000000000000000	0x0000000000000000
+0x555d5ebe30b0:	0x0000000000000000	0x0000000000000000
+0x555d5ebe30c0:	0x0000000000000000	0x0000000000000071
+0x555d5ebe30d0:	0x0000000000000000	0x0000000000000000
+0x555d5ebe30e0:	0x0000000000000000	0x0000000000000000
+gef➤  
+0x555d5ebe30f0:	0x0000000000000000	0x0000000000000000
+0x555d5ebe3100:	0x0000000000000000	0x0000000000000000
+0x555d5ebe3110:	0x0000000000000000	0x0000000000000000
+0x555d5ebe3120:	0x0000000000000000	0x0000000000000000
+0x555d5ebe3130:	0x0000000000000000	0x0000000000000021
+0x555d5ebe3140:	0x00007ff45aa20b78	0x00007ff45aa20b78
+0x555d5ebe3150:	0x0000000000000020	0x0000000000000090
+0x555d5ebe3160:	0x0000000000000000	0x0000000000000000
+0x555d5ebe3170:	0x0000000000000000	0x0000000000000000
+0x555d5ebe3180:	0x0000000000000000	0x0000000000000000
+0x555d5ebe3190:	0x0000000000000000	0x0000000000000000
+0x555d5ebe31a0:	0x0000000000000000	0x0000000000000000
+0x555d5ebe31b0:	0x0000000000000000	0x0000000000000000
+0x555d5ebe31c0:	0x0000000000000000	0x0000000000000000
+0x555d5ebe31d0:	0x0000000000000000	0x0000000000000000
+gef➤  heap bins
+──────────────────────────────────────────────────────────────────────────────────[ Fastbins for arena 0x7ff45aa20b20 ]──────────────────────────────────────────────────────────────────────────────────
+Fastbins[idx=0, size=0x10] 0x00
+Fastbins[idx=1, size=0x20] 0x00
+Fastbins[idx=2, size=0x30] 0x00
+Fastbins[idx=3, size=0x40] 0x00
+Fastbins[idx=4, size=0x50] 0x00
+Fastbins[idx=5, size=0x60] 0x00
+Fastbins[idx=6, size=0x70] 0x00
+─────────────────────────────────────────────────────────────────────────────────[ Unsorted Bin for arena 'main_arena' ]─────────────────────────────────────────────────────────────────────────────────
+[+] unsorted_bins[0]: fw=0x555d5ebe3130, bk=0x555d5ebe3130
+ →   Chunk(addr=0x555d5ebe3140, size=0x20, flags=PREV_INUSE)
+[+] Found 1 chunks in unsorted bin.
+──────────────────────────────────────────────────────────────────────────────────[ Small Bins for arena 'main_arena' ]──────────────────────────────────────────────────────────────────────────────────
+[+] Found 0 chunks in 0 small non-empty bins.
+──────────────────────────────────────────────────────────────────────────────────[ Large Bins for arena 'main_arena' ]──────────────────────────────────────────────────────────────────────────────────
+[+] Found 0 chunks in 0 large non-empty bins.
+gef➤  heap chunks 
+Chunk(addr=0x555d5ebe3010, size=0x30, flags=PREV_INUSE)
+    [0x0000555d5ebe3010     00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00     ................]
+Chunk(addr=0x555d5ebe3040, size=0x30, flags=PREV_INUSE)
+    [0x0000555d5ebe3040     00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00     ................]
+Chunk(addr=0x555d5ebe3070, size=0x30, flags=PREV_INUSE)
+    [0x0000555d5ebe3070     00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00     ................]
+Chunk(addr=0x555d5ebe30a0, size=0x30, flags=PREV_INUSE)
+    [0x0000555d5ebe30a0     00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00     ................]
+Chunk(addr=0x555d5ebe30d0, size=0x70, flags=PREV_INUSE)
+    [0x0000555d5ebe30d0     00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00     ................]
+Chunk(addr=0x555d5ebe3140, size=0x20, flags=PREV_INUSE)
+    [0x0000555d5ebe3140     78 0b a2 5a f4 7f 00 00 78 0b a2 5a f4 7f 00 00     x..Z....x..Z....]
+Chunk(addr=0x555d5ebe3160, size=0x90, flags=)
+    [0x0000555d5ebe3160     00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00     ................]
+Chunk(addr=0x555d5ebe31f0, size=0x20e20, flags=PREV_INUSE)  ←  top chunk
+gef➤  
+
+//free 4
+gef➤  heap chunks 
+Chunk(addr=0x555d5ebe3010, size=0x30, flags=PREV_INUSE)
+    [0x0000555d5ebe3010     00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00     ................]
+Chunk(addr=0x555d5ebe3040, size=0x30, flags=PREV_INUSE)
+    [0x0000555d5ebe3040     00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00     ................]
+Chunk(addr=0x555d5ebe3070, size=0x30, flags=PREV_INUSE)
+    [0x0000555d5ebe3070     00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00     ................]
+Chunk(addr=0x555d5ebe30a0, size=0x30, flags=PREV_INUSE)
+    [0x0000555d5ebe30a0     00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00     ................]
+Chunk(addr=0x555d5ebe30d0, size=0x70, flags=PREV_INUSE)
+    [0x0000555d5ebe30d0     00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00     ................]
+Chunk(addr=0x555d5ebe3140, size=0x20, flags=PREV_INUSE)
+    [0x0000555d5ebe3140     78 0b a2 5a f4 7f 00 00 78 0b a2 5a f4 7f 00 00     x..Z....x..Z....]
+Chunk(addr=0x555d5ebe3160, size=0x90, flags=)
+    [0x0000555d5ebe3160     00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00     ................]
+Chunk(addr=0x555d5ebe31f0, size=0x20e20, flags=PREV_INUSE)  ←  top chunk
+gef➤  heap bins
+──────────────────────────────────────────────────────────────────────────────────[ Fastbins for arena 0x7ff45aa20b20 ]──────────────────────────────────────────────────────────────────────────────────
+Fastbins[idx=0, size=0x10] 0x00
+Fastbins[idx=1, size=0x20] 0x00
+Fastbins[idx=2, size=0x30] 0x00
+Fastbins[idx=3, size=0x40] 0x00
+Fastbins[idx=4, size=0x50] 0x00
+Fastbins[idx=5, size=0x60]  ←  Chunk(addr=0x555d5ebe30d0, size=0x70, flags=PREV_INUSE) 
+Fastbins[idx=6, size=0x70] 0x00
+─────────────────────────────────────────────────────────────────────────────────[ Unsorted Bin for arena 'main_arena' ]─────────────────────────────────────────────────────────────────────────────────
+[+] unsorted_bins[0]: fw=0x555d5ebe3130, bk=0x555d5ebe3130
+ →   Chunk(addr=0x555d5ebe3140, size=0x20, flags=PREV_INUSE)
+[+] Found 1 chunks in unsorted bin.
+──────────────────────────────────────────────────────────────────────────────────[ Small Bins for arena 'main_arena' ]──────────────────────────────────────────────────────────────────────────────────
+[+] Found 0 chunks in 0 small non-empty bins.
+──────────────────────────────────────────────────────────────────────────────────[ Large Bins for arena 'main_arena' ]──────────────────────────────────────────────────────────────────────────────────
+[+] Found 0 chunks in 0 large non-empty bins.
+gef➤  x/30gx 0x555d5ebe3000
+0x555d5ebe3000:	0x0000000000000000	0x0000000000000031
+0x555d5ebe3010:	0x0000000000000000	0x0000000000000000
+0x555d5ebe3020:	0x0000000000000000	0x0000000000000000
+0x555d5ebe3030:	0x0000000000000000	0x0000000000000031
+0x555d5ebe3040:	0x0000000000000000	0x0000000000000000
+0x555d5ebe3050:	0x0000000000000000	0x0000000000000000
+0x555d5ebe3060:	0x0000000000000000	0x0000000000000031
+0x555d5ebe3070:	0x0000000000000000	0x0000000000000000
+0x555d5ebe3080:	0x0000000000000000	0x0000000000000000
+0x555d5ebe3090:	0x0000000000000000	0x0000000000000031
+0x555d5ebe30a0:	0x0000000000000000	0x0000000000000000
+0x555d5ebe30b0:	0x0000000000000000	0x0000000000000000
+0x555d5ebe30c0:	0x0000000000000000	0x0000000000000071
+0x555d5ebe30d0:	0x0000000000000000	0x0000000000000000
+0x555d5ebe30e0:	0x0000000000000000	0x0000000000000000
+gef➤  
+0x555d5ebe30f0:	0x0000000000000000	0x0000000000000000
+0x555d5ebe3100:	0x0000000000000000	0x0000000000000000
+0x555d5ebe3110:	0x0000000000000000	0x0000000000000000
+0x555d5ebe3120:	0x0000000000000000	0x0000000000000000
+0x555d5ebe3130:	0x0000000000000000	0x0000000000000021
+0x555d5ebe3140:	0x00007ff45aa20b78	0x00007ff45aa20b78
+0x555d5ebe3150:	0x0000000000000020	0x0000000000000090
+0x555d5ebe3160:	0x0000000000000000	0x0000000000000000
+0x555d5ebe3170:	0x0000000000000000	0x0000000000000000
+0x555d5ebe3180:	0x0000000000000000	0x0000000000000000
+0x555d5ebe3190:	0x0000000000000000	0x0000000000000000
+0x555d5ebe31a0:	0x0000000000000000	0x0000000000000000
+0x555d5ebe31b0:	0x0000000000000000	0x0000000000000000
+0x555d5ebe31c0:	0x0000000000000000	0x0000000000000000
+0x555d5ebe31d0:	0x0000000000000000	0x0000000000000000
+
+
+
+
+gef➤  x/30gx 0x555d5ebe3000
+0x555d5ebe3000:	0x0000000000000000	0x0000000000000031
+0x555d5ebe3010:	0x0000000000000000	0x0000000000000000
+0x555d5ebe3020:	0x0000000000000000	0x0000000000000000
+0x555d5ebe3030:	0x0000000000000000	0x0000000000000031
+0x555d5ebe3040:	0x0000000000000000	0x0000000000000000
+0x555d5ebe3050:	0x0000000000000000	0x0000000000000000
+0x555d5ebe3060:	0x0000000000000000	0x0000000000000031
+0x555d5ebe3070:	0x0000000000000000	0x0000000000000000
+0x555d5ebe3080:	0x0000000000000000	0x0000000000000000
+0x555d5ebe3090:	0x0000000000000000	0x0000000000000031
+0x555d5ebe30a0:	0x0000000000000000	0x0000000000000000
+0x555d5ebe30b0:	0x0000000000000000	0x0000000000000000
+0x555d5ebe30c0:	0x0000000000000000	0x0000000000000071
+0x555d5ebe30d0:	0x00007f70bd6d7aed	0x0000000000000000
+0x555d5ebe30e0:	0x0000000000000000	0x0000000000000000
+gef➤  
+0x555d5ebe30f0:	0x0000000000000000	0x0000000000000000
+0x555d5ebe3100:	0x0000000000000000	0x0000000000000000
+0x555d5ebe3110:	0x0000000000000000	0x0000000000000000
+0x555d5ebe3120:	0x0000000000000000	0x0000000000000000
+0x555d5ebe3130:	0x0000000000000000	0x0000000000000021
+0x555d5ebe3140:	0x00007f70bd6d7b78	0x00007f70bd6d7b78
+0x555d5ebe3150:	0x0000000000000020	0x0000000000000090
+0x555d5ebe3160:	0x0000000000000000	0x0000000000000000
+0x555d5ebe3170:	0x0000000000000000	0x0000000000000000
+0x555d5ebe3180:	0x0000000000000000	0x0000000000000000
+0x555d5ebe3190:	0x0000000000000000	0x0000000000000000
+0x555d5ebe31a0:	0x0000000000000000	0x0000000000000000
+0x555d5ebe31b0:	0x0000000000000000	0x0000000000000000
+0x555d5ebe31c0:	0x0000000000000000	0x0000000000000000
+0x555d5ebe31d0:	0x0000000000000000	0x0000000000000000
+gef➤  heap bins 
+──────────────────────────────────────────────────────────────────────────────────[ Fastbins for arena 0x7f70bd6d7b20 ]──────────────────────────────────────────────────────────────────────────────────
+Fastbins[idx=0, size=0x10] 0x00
+Fastbins[idx=1, size=0x20] 0x00
+Fastbins[idx=2, size=0x30] 0x00
+Fastbins[idx=3, size=0x40] 0x00
+Fastbins[idx=4, size=0x50] 0x00
+Fastbins[idx=5, size=0x60]  ←  Chunk(addr=0x555d5ebe30d0, size=0x70, flags=PREV_INUSE)  ←  Chunk(addr=0x7f70bd6d7afd, size=0x7c, flags=PREV_INUSE|IS_MMAPPED|NON_MAIN_ARENA)  ←  [Corrupted chunk at 0x70bd398e20000010]
+Fastbins[idx=6, size=0x70] 0x00
+─────────────────────────────────────────────────────────────────────────────────[ Unsorted Bin for arena 'main_arena' ]─────────────────────────────────────────────────────────────────────────────────
+[+] unsorted_bins[0]: fw=0x555d5ebe3130, bk=0x555d5ebe3130
+ →   Chunk(addr=0x555d5ebe3140, size=0x20, flags=PREV_INUSE)
+[+] Found 1 chunks in unsorted bin.
+──────────────────────────────────────────────────────────────────────────────────[ Small Bins for arena 'main_arena' ]──────────────────────────────────────────────────────────────────────────────────
+[+] Found 0 chunks in 0 small non-empty bins.
+──────────────────────────────────────────────────────────────────────────────────[ Large Bins for arena 'main_arena' ]──────────────────────────────────────────────────────────────────────────────────
+[+] Found 0 chunks in 0 large non-empty bins.
+gef➤  x/30gx 0x7f70bd6d7afd
+
+
+──────────────────────────────────────────────────────────────────────────────────[ Fastbins for arena 0x7f70bd6d7b20 ]──────────────────────────────────────────────────────────────────────────────────
+Fastbins[idx=0, size=0x10] 0x00
+Fastbins[idx=1, size=0x20] 0x00
+Fastbins[idx=2, size=0x30] 0x00
+Fastbins[idx=3, size=0x40] 0x00
+Fastbins[idx=4, size=0x50] 0x00
+Fastbins[idx=5, size=0x60]  ←  Chunk(addr=0x555d5ebe30d0, size=0x70, flags=PREV_INUSE)  ←  Chunk(addr=0x7f70bd6d7afd, size=0x7c, flags=PREV_INUSE|IS_MMAPPED|NON_MAIN_ARENA)  ←  [Corrupted chunk at 0x70bd398e20000010]
+Fastbins[idx=6, size=0x70] 0x00
+─────────────────────────────────────────────────────────────────────────────────[ Unsorted Bin for arena 'main_arena' ]─────────────────────────────────────────────────────────────────────────────────
+[+] unsorted_bins[0]: fw=0x555d5ebe3130, bk=0x555d5ebe3130
+ →   Chunk(addr=0x555d5ebe3140, size=0x20, flags=PREV_INUSE)
+[+] Found 1 chunks in unsorted bin.
+──────────────────────────────────────────────────────────────────────────────────[ Small Bins for arena 'main_arena' ]──────────────────────────────────────────────────────────────────────────────────
+[+] Found 0 chunks in 0 small non-empty bins.
+──────────────────────────────────────────────────────────────────────────────────[ Large Bins for arena 'main_arena' ]──────────────────────────────────────────────────────────────────────────────────
+[+] Found 0 chunks in 0 large non-empty bins.
+gef➤  x/30gx 0x7f70bd6d7aed
+0x7f70bd6d7aed <_IO_wide_data_0+301>:	0x70bd6d6260000000	0x000000000000007f
+0x7f70bd6d7afd:	0x70bd398e20000000	0x70bd398a0000007f
+0x7f70bd6d7b0d <__realloc_hook+5>:	0x000000000000007f	0x0000000000000000
+0x7f70bd6d7b1d:	0x0000000000000000	0x0000000000000000
+0x7f70bd6d7b2d <main_arena+13>:	0x0000000000000000	0x0000000000000000
+0x7f70bd6d7b3d <main_arena+29>:	0x0000000000000000	0x0000000000000000
+0x7f70bd6d7b4d <main_arena+45>:	0x5d5ebe30c0000000	0x0000000000000055
+0x7f70bd6d7b5d <main_arena+61>:	0x0000000000000000	0x0000000000000000
+0x7f70bd6d7b6d <main_arena+77>:	0x0000000000000000	0x5d5ebe31e0000000
+0x7f70bd6d7b7d <main_arena+93>:	0x5d5ebe3130000055	0x5d5ebe3130000055
+0x7f70bd6d7b8d <main_arena+109>:	0x5d5ebe3130000055	0x70bd6d7b88000055
+0x7f70bd6d7b9d <main_arena+125>:	0x70bd6d7b8800007f	0x70bd6d7b9800007f
+0x7f70bd6d7bad <main_arena+141>:	0x70bd6d7b9800007f	0x70bd6d7ba800007f
+0x7f70bd6d7bbd <main_arena+157>:	0x70bd6d7ba800007f	0x70bd6d7bb800007f
+0x7f70bd6d7bcd <main_arena+173>:	0x70bd6d7bb800007f	0x70bd6d7bc800007f
+gef➤  c
+Continuing.
+
+Breakpoint 1, __libc_calloc (n=0x60, elem_size=0x1) at malloc.c:3172
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+gef➤  heap bins 
+──────────────────────────────────────────────────────────────────────────────────[ Fastbins for arena 0x7f70bd6d7b20 ]──────────────────────────────────────────────────────────────────────────────────
+Fastbins[idx=0, size=0x10] 0x00
+Fastbins[idx=1, size=0x20] 0x00
+Fastbins[idx=2, size=0x30] 0x00
+Fastbins[idx=3, size=0x40] 0x00
+Fastbins[idx=4, size=0x50] 0x00
+Fastbins[idx=5, size=0x60]  ←  Chunk(addr=0x7f70bd6d7afd, size=0x7c, flags=PREV_INUSE|IS_MMAPPED|NON_MAIN_ARENA)  ←  [Corrupted chunk at 0x70bd398e20000010]
+Fastbins[idx=6, size=0x70] 0x00
+─────────────────────────────────────────────────────────────────────────────────[ Unsorted Bin for arena 'main_arena' ]─────────────────────────────────────────────────────────────────────────────────
+[+] unsorted_bins[0]: fw=0x555d5ebe3130, bk=0x555d5ebe3130
+ →   Chunk(addr=0x555d5ebe3140, size=0x20, flags=PREV_INUSE)
+[+] Found 1 chunks in unsorted bin.
+──────────────────────────────────────────────────────────────────────────────────[ Small Bins for arena 'main_arena' ]──────────────────────────────────────────────────────────────────────────────────
+[+] Found 0 chunks in 0 small non-empty bins.
+──────────────────────────────────────────────────────────────────────────────────[ Large Bins for arena 'main_arena' ]──────────────────────────────────────────────────────────────────────────────────
+[+] Found 0 chunks in 0 large non-empty bins.
+gef➤  x/30gx 0x555d5ebe3000
+0x555d5ebe3000:	0x0000000000000000	0x0000000000000031
+0x555d5ebe3010:	0x0000000000000000	0x0000000000000000
+0x555d5ebe3020:	0x0000000000000000	0x0000000000000000
+0x555d5ebe3030:	0x0000000000000000	0x0000000000000031
+0x555d5ebe3040:	0x0000000000000000	0x0000000000000000
+0x555d5ebe3050:	0x0000000000000000	0x0000000000000000
+0x555d5ebe3060:	0x0000000000000000	0x0000000000000031
+0x555d5ebe3070:	0x0000000000000000	0x0000000000000000
+0x555d5ebe3080:	0x0000000000000000	0x0000000000000000
+0x555d5ebe3090:	0x0000000000000000	0x0000000000000031
+0x555d5ebe30a0:	0x0000000000000000	0x0000000000000000
+0x555d5ebe30b0:	0x0000000000000000	0x0000000000000000
+0x555d5ebe30c0:	0x0000000000000000	0x0000000000000071
+0x555d5ebe30d0:	0x0000000000000000	0x0000000000000000
+0x555d5ebe30e0:	0x0000000000000000	0x0000000000000000
+gef➤  
+0x555d5ebe30f0:	0x0000000000000000	0x0000000000000000
+0x555d5ebe3100:	0x0000000000000000	0x0000000000000000
+0x555d5ebe3110:	0x0000000000000000	0x0000000000000000
+0x555d5ebe3120:	0x0000000000000000	0x0000000000000000
+0x555d5ebe3130:	0x0000000000000000	0x0000000000000021
+0x555d5ebe3140:	0x00007f70bd6d7b78	0x00007f70bd6d7b78
+0x555d5ebe3150:	0x0000000000000020	0x0000000000000090
+0x555d5ebe3160:	0x0000000000000000	0x0000000000000000
+0x555d5ebe3170:	0x0000000000000000	0x0000000000000000
+0x555d5ebe3180:	0x0000000000000000	0x0000000000000000
+0x555d5ebe3190:	0x0000000000000000	0x0000000000000000
+0x555d5ebe31a0:	0x0000000000000000	0x0000000000000000
+0x555d5ebe31b0:	0x0000000000000000	0x0000000000000000
+0x555d5ebe31c0:	0x0000000000000000	0x0000000000000000
+0x555d5ebe31d0:	0x0000000000000000	0x0000000000000000
+gef➤  heap chunks 
+Chunk(addr=0x555d5ebe3010, size=0x30, flags=PREV_INUSE)
+    [0x0000555d5ebe3010     00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00     ................]
+Chunk(addr=0x555d5ebe3040, size=0x30, flags=PREV_INUSE)
+    [0x0000555d5ebe3040     00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00     ................]
+Chunk(addr=0x555d5ebe3070, size=0x30, flags=PREV_INUSE)
+    [0x0000555d5ebe3070     00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00     ................]
+Chunk(addr=0x555d5ebe30a0, size=0x30, flags=PREV_INUSE)
+    [0x0000555d5ebe30a0     00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00     ................]
+Chunk(addr=0x555d5ebe30d0, size=0x70, flags=PREV_INUSE)
+    [0x0000555d5ebe30d0     00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00     ................]
+Chunk(addr=0x555d5ebe3140, size=0x20, flags=PREV_INUSE)
+    [0x0000555d5ebe3140     78 7b 6d bd 70 7f 00 00 78 7b 6d bd 70 7f 00 00     x{m.p...x{m.p...]
+Chunk(addr=0x555d5ebe3160, size=0x90, flags=)
+    [0x0000555d5ebe3160     00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00     ................]
+Chunk(addr=0x555d5ebe31f0, size=0x20e20, flags=PREV_INUSE)  ←  top chunk
+gef➤  c
+Continuing.
+
+Breakpoint 1, __libc_calloc (n=0xff, elem_size=0x1) at malloc.c:3172
+
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+gef➤  heap chunks 
+Chunk(addr=0x555d5ebe3010, size=0x30, flags=PREV_INUSE)
+    [0x0000555d5ebe3010     00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00     ................]
+Chunk(addr=0x555d5ebe3040, size=0x30, flags=PREV_INUSE)
+    [0x0000555d5ebe3040     00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00     ................]
+Chunk(addr=0x555d5ebe3070, size=0x30, flags=PREV_INUSE)
+    [0x0000555d5ebe3070     00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00     ................]
+Chunk(addr=0x555d5ebe30a0, size=0x30, flags=PREV_INUSE)
+    [0x0000555d5ebe30a0     00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00     ................]
+Chunk(addr=0x555d5ebe30d0, size=0x70, flags=PREV_INUSE)
+    [0x0000555d5ebe30d0     00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00     ................]
+Chunk(addr=0x555d5ebe3140, size=0x20, flags=PREV_INUSE)
+    [0x0000555d5ebe3140     78 7b 6d bd 70 7f 00 00 78 7b 6d bd 70 7f 00 00     x{m.p...x{m.p...]
+Chunk(addr=0x555d5ebe3160, size=0x90, flags=)
+    [0x0000555d5ebe3160     00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00     ................]
+Chunk(addr=0x555d5ebe31f0, size=0x20e20, flags=PREV_INUSE)  ←  top chunk
+gef➤  heap bins 
+──────────────────────────────────────────────────────────────────────────────────[ Fastbins for arena 0x7f70bd6d7b20 ]──────────────────────────────────────────────────────────────────────────────────
+Fastbins[idx=0, size=0x10] 0x00
+Fastbins[idx=1, size=0x20] 0x00
+Fastbins[idx=2, size=0x30] 0x00
+Fastbins[idx=3, size=0x40] 0x00
+Fastbins[idx=4, size=0x50] 0x00
+Fastbins[idx=5, size=0x60] 0x00
+Fastbins[idx=6, size=0x70] 0x00
+─────────────────────────────────────────────────────────────────────────────────[ Unsorted Bin for arena 'main_arena' ]─────────────────────────────────────────────────────────────────────────────────
+[+] unsorted_bins[0]: fw=0x555d5ebe3130, bk=0x555d5ebe3130
+ →   Chunk(addr=0x555d5ebe3140, size=0x20, flags=PREV_INUSE)
+[+] Found 1 chunks in unsorted bin.
+──────────────────────────────────────────────────────────────────────────────────[ Small Bins for arena 'main_arena' ]──────────────────────────────────────────────────────────────────────────────────
+[+] Found 0 chunks in 0 small non-empty bins.
+──────────────────────────────────────────────────────────────────────────────────[ Large Bins for arena 'main_arena' ]──────────────────────────────────────────────────────────────────────────────────
+[+] Found 0 chunks in 0 large non-empty bins.
+gef➤  x/30gx 0x7f70bd6d7aed
+0x7f70bd6d7aed <_IO_wide_data_0+301>:	0x70bd6d6260000000	0x000000000000007f
+0x7f70bd6d7afd:	0x0000000000000000	0x0000000000000000
+0x7f70bd6d7b0d <__realloc_hook+5>:	0x70bd35826a000000	0x000000000000007f
+0x7f70bd6d7b1d:	0x0000000000000000	0x0000000000000000
+0x7f70bd6d7b2d <main_arena+13>:	0x0000000000000000	0x0000000000000000
+0x7f70bd6d7b3d <main_arena+29>:	0x0000000000000000	0x0000000000000000
+0x7f70bd6d7b4d <main_arena+45>:	0x8e20000000000000	0x000000000070bd39
+0x7f70bd6d7b5d <main_arena+61>:	0x0000000000000000	0x0000000000000000
+0x7f70bd6d7b6d <main_arena+77>:	0x0000000000000000	0x5d5ebe31e0000000
+0x7f70bd6d7b7d <main_arena+93>:	0x5d5ebe3130000055	0x5d5ebe3130000055
+0x7f70bd6d7b8d <main_arena+109>:	0x5d5ebe3130000055	0x70bd6d7b88000055
+0x7f70bd6d7b9d <main_arena+125>:	0x70bd6d7b8800007f	0x70bd6d7b9800007f
+0x7f70bd6d7bad <main_arena+141>:	0x70bd6d7b9800007f	0x70bd6d7ba800007f
+0x7f70bd6d7bbd <main_arena+157>:	0x70bd6d7ba800007f	0x70bd6d7bb800007f
+0x7f70bd6d7bcd <main_arena+173>:	0x70bd6d7bb800007f	0x70bd6d7bc800007f
+gef➤  heap chunks 
+Chunk(addr=0x555d5ebe3010, size=0x30, flags=PREV_INUSE)
+    [0x0000555d5ebe3010     00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00     ................]
+Chunk(addr=0x555d5ebe3040, size=0x30, flags=PREV_INUSE)
+    [0x0000555d5ebe3040     00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00     ................]
+Chunk(addr=0x555d5ebe3070, size=0x30, flags=PREV_INUSE)
+    [0x0000555d5ebe3070     00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00     ................]
+Chunk(addr=0x555d5ebe30a0, size=0x30, flags=PREV_INUSE)
+    [0x0000555d5ebe30a0     00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00     ................]
+Chunk(addr=0x555d5ebe30d0, size=0x70, flags=PREV_INUSE)
+    [0x0000555d5ebe30d0     00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00     ................]
+Chunk(addr=0x555d5ebe3140, size=0x20, flags=PREV_INUSE)
+    [0x0000555d5ebe3140     78 7b 6d bd 70 7f 00 00 78 7b 6d bd 70 7f 00 00     x{m.p...x{m.p...]
+Chunk(addr=0x555d5ebe3160, size=0x90, flags=)
+    [0x0000555d5ebe3160     00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00     ................]
+Chunk(addr=0x555d5ebe31f0, size=0x20e20, flags=PREV_INUSE)  ←  top chunk
+gef➤  x/30gx 0x7f70bd6d7afd+0x3
+0x7f70bd6d7b00 <__memalign_hook>:	0x0000000000000000	0x0000000000000000
+0x7f70bd6d7b10 <__malloc_hook>:	0x00007f70bd35826a	0x0000000000000000
+0x7f70bd6d7b20 <main_arena>:	0x0000000000000000	0x0000000000000000
+0x7f70bd6d7b30 <main_arena+16>:	0x0000000000000000	0x0000000000000000
+0x7f70bd6d7b40 <main_arena+32>:	0x0000000000000000	0x0000000000000000
+0x7f70bd6d7b50 <main_arena+48>:	0x70bd398e20000000	0x0000000000000000
+0x7f70bd6d7b60 <main_arena+64>:	0x0000000000000000	0x0000000000000000
+0x7f70bd6d7b70 <main_arena+80>:	0x0000000000000000	0x0000555d5ebe31e0
+0x7f70bd6d7b80 <main_arena+96>:	0x0000555d5ebe3130	0x0000555d5ebe3130
+0x7f70bd6d7b90 <main_arena+112>:	0x0000555d5ebe3130	0x00007f70bd6d7b88
+0x7f70bd6d7ba0 <main_arena+128>:	0x00007f70bd6d7b88	0x00007f70bd6d7b98
+0x7f70bd6d7bb0 <main_arena+144>:	0x00007f70bd6d7b98	0x00007f70bd6d7ba8
+0x7f70bd6d7bc0 <main_arena+160>:	0x00007f70bd6d7ba8	0x00007f70bd6d7bb8
+0x7f70bd6d7bd0 <main_arena+176>:	0x00007f70bd6d7bb8	0x00007f70bd6d7bc8
+0x7f70bd6d7be0 <main_arena+192>:	0x00007f70bd6d7bc8	0x00007f70bd6d7bd8

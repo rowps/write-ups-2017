@@ -1,0 +1,4 @@
+首先看获取libc基地址的方法：
+首先应该记住这样一条规律：当small chunk被释放时，它的fd、bk指向一个指针，这个指针指向top chunk地址，这个指针保存在main_arena的0x58偏移处，而main_arena是libc的data段中，是全局静态变量，所以偏移也是固定的，根据这些就可以计算出libc的基地址了
+
+所以重点是当small chunk释放时，能读出fd 或者 bk的值
